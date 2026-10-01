@@ -5,35 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AOIofc1</title>
     <style>
-        * {
-            box-sizing: border-box;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
-            margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             background: #050505;
             color: white;
             overflow-x: hidden;
         }
-        /* FAIXA DE LED */
+
+        /* LED superior */
         .led {
             position: fixed;
             top: 0;
             left: -100%;
             width: 70%;
             height: 4px;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                #ff0000,
-                #ffffff,
-                #ff0000,
-                transparent
-            );
-            box-shadow:
-                0 0 10px #ff0000,
-                0 0 25px #ff0000,
-                0 0 45px #ff0000;
+            background: linear-gradient(90deg, transparent, #ff0000, #fff, #ff0000, transparent);
+            box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
             animation: ledPassando 4s linear infinite;
             z-index: 999;
         }
@@ -41,158 +30,194 @@
             0% { left: -70%; }
             100% { left: 100%; }
         }
-        /* CABEÇALHO */
+
+        /* Cabeçalho */
         header {
-            min-height: 70vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background:
-                radial-gradient(
-                    circle at center,
-                    #300000 0%,
-                    #100000 25%,
-                    #050505 65%
-                );
+            background: url('fundo.jpeg') center/cover no-repeat;
+            position: relative;
             padding: 40px 20px;
         }
-        h1 {
-            font-size: 80px;
-            margin: 0;
-            color: white;
-            text-shadow:
-                0 0 10px #ff0000,
-                0 0 25px #ff0000,
-                0 0 50px #ff0000;
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
         }
-        .subtitulo {
-            font-size: 22px;
-            color: #cccccc;
-            margin-top: 15px;
+        header > * { position: relative; z-index: 1; }
+
+        h1 {
+            font-size: 75px;
+            text-shadow: 0 0 15px #ff0000, 0 0 35px #ff0000;
         }
         .linha {
-            width: 180px;
+            width: 160px;
             height: 4px;
             background: #ff0000;
-            margin: 25px auto;
-            box-shadow:
-                0 0 10px #ff0000,
-                0 0 25px #ff0000;
+            margin: 20px auto;
+            box-shadow: 0 0 12px #ff0000;
         }
-        /* BOTÃO DE MÚSICA */
+        .subtitulo {
+            font-size: 20px;
+            color: #ccc;
+            margin-top: 12px;
+        }
+
+        /* Botão música */
         .btn-musica {
-            margin-top: 30px;
-            padding: 14px 32px;
+            margin-top: 35px;
+            padding: 13px 30px;
             border: 1px solid #ff0000;
             border-radius: 50px;
             background: #0d0d0d;
             color: white;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: bold;
             cursor: pointer;
             transition: 0.3s;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 0 10px rgba(255,0,0,0.4);
         }
         .btn-musica:hover {
             background: #ff0000;
             transform: scale(1.05);
-            box-shadow:
-                0 0 15px #ff0000,
-                0 0 30px #ff0000;
+            box-shadow: 0 0 20px #ff0000;
         }
-        /* REDES */
+
+        /* Redes */
         .redes {
-            padding: 70px 20px;
+            padding: 60px 20px;
             text-align: center;
             background: #080808;
         }
         .redes h2 {
-            font-size: 35px;
-            margin-bottom: 40px;
+            font-size: 32px;
+            margin-bottom: 35px;
         }
         .botao {
-            position: relative;
             display: block;
-            width: 300px;
+            width: 280px;
             max-width: 90%;
-            margin: 18px auto;
-            padding: 17px;
+            margin: 16px auto;
+            padding: 15px;
             border: 1px solid #ff0000;
             border-radius: 8px;
             background: #0d0d0d;
             color: white;
             text-decoration: none;
-            font-size: 19px;
+            font-size: 18px;
             font-weight: bold;
             transition: 0.3s;
-            box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 0 8px rgba(255,0,0,0.3);
         }
         .botao:hover {
             background: #ff0000;
-            color: white;
-            transform: scale(1.06);
-            box-shadow:
-                0 0 10px #ff0000,
-                0 0 25px #ff0000,
-                0 0 45px #ff0000;
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #ff0000;
         }
-        /* RODAPÉ + CRÉDITOS */
+
+        /* Rodapé */
         footer {
-            padding: 40px 20px;
+            padding: 35px 20px;
             text-align: center;
             background: #030303;
             border-top: 1px solid #ff0000;
             color: #888;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
         }
-        footer strong {
-            color: white;
-        }
+        footer strong { color: white; }
         .creditos {
-            margin-top: 25px;
-            padding-top: 20px;
+            margin-top: 20px;
+            padding-top: 18px;
             border-top: 1px solid #222;
             color: #777;
-            font-size: 14px;
         }
-        /* LED INFERIOR */
+
+        /* LED inferior */
         .led-bottom {
-            width: 100%;
             height: 3px;
             background: #ff0000;
-            box-shadow:
-                0 0 10px #ff0000,
-                0 0 25px #ff0000;
+            box-shadow: 0 0 12px #ff0000;
             animation: pulsar 1.5s infinite alternate;
         }
         @keyframes pulsar {
-            from {
-                opacity: 0.4;
-                box-shadow: 0 0 5px #ff0000;
-            }
-            to {
-                opacity: 1;
-                box-shadow:
-                    0 0 15px #ff0000,
-                    0 0 35px #ff0000;
-            }
+            from { opacity: 0.4; }
+            to { opacity: 1; box-shadow: 0 0 20px #ff0000; }
         }
+
         #player {
             position: absolute;
             width: 1px;
             height: 1px;
             opacity: 0;
-            pointer-events: none;
         }
     </style>
 </head>
 <body>
+
     <div class="led"></div>
 
     <header>
         <h1>AOIofc1</h1>
         <div class="linha"></div>
-        <p class="subtitulo">Bem-vindo AO CANTINHO DO AOI 🎮
+        <p class="subtitulo">Bem-vindo AO CANTINHO DO AOI 🎮</p>
+        <p class="subtitulo">Conteúdos, vídeos, lives e muito mais.</p>
+        <button class="btn-musica" id="btnMusica" onclick="toggleMusica()">🎵 Tocar Música</button>
+    </header>
+
+    <section class="redes">
+        <h2>🌐 MINHAS REDES!</h2>
+        <a class="botao" href="https://www.youtube.com/@AOIofc1" target="_blank">🔴 YouTube</a>
+        <a class="botao" href="https://www.instagram.com/aoiofc1/" target="_blank">🟢 Instagram</a>
+        <a class="botao" href="https://www.tiktok.com/@aoiofc1" target="_blank">⚪ TikTok</a>
+        <a class="botao" href="https://x.com/AOIofc1" target="_blank">𝕏 X / Twitter</a>
+    </section>
+
+    <footer>
+        © AOIofc1
+        <div class="creditos">
+            <strong>Créditos</strong><br>
+            Site criado por <strong>AOIofc1</strong><br>
+            Música: <strong>Dreams</strong> — Joakim Karud (2016)
+        </div>
+    </footer>
+
+    <div class="led-bottom"></div>
+    <div id="player"></div>
+
+    <script>
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        document.getElementsByTagName('script')[0].parentNode.insertBefore(tag, document.getElementsByTagName('script')[0]);
+
+        var player, tocando = false;
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '1', width: '1',
+                videoId: 'tLcfHqjDpBg',
+                playerVars: { autoplay: 0, controls: 0, loop: 1, playlist: 'tLcfHqjDpBg' },
+                events: { onReady: e => e.target.setVolume(40) }
+            });
+        }
+
+        function toggleMusica() {
+            const btn = document.getElementById('btnMusica');
+            if (!tocando) {
+                player.playVideo();
+                btn.innerHTML = "⏸ Pausar Música";
+                tocando = true;
+            } else {
+                player.pauseVideo();
+                btn.innerHTML = "🎵 Tocar Música";
+                tocando = false;
+            }
+        }
+    </script>
+</body>
+</html>
