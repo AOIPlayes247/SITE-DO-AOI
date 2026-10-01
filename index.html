@@ -31,6 +31,31 @@
             100% { left: 100%; }
         }
 
+        /* Fundo com estrelas e X */
+        .estrelas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .estrela, .xis {
+            position: absolute;
+            font-size: 22px;
+            font-weight: bold;
+            animation: tremer 2.8s ease-in-out infinite;
+            text-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+        }
+        .estrela { color: #ff2222; }
+        .xis { color: #ffffff; }
+
+        @keyframes tremer {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.85; }
+            25% { transform: translate(2px, -2px) rotate(2deg); opacity: 1; }
+            50% { transform: translate(-2px, 2px) rotate(-2deg); opacity: 0.7; }
+            75% { transform: translate(1px, 1px) rotate(1deg); opacity: 1; }
+        }
+
         /* Cabeçalho */
         header {
             min-height: 100vh;
@@ -39,17 +64,11 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: url('fundo.jpeg') center/cover no-repeat;
+            background: radial-gradient(circle at center, #1a0000 0%, #0a0000 40%, #050505 80%);
             position: relative;
             padding: 40px 20px;
+            z-index: 1;
         }
-        header::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-        }
-        header > * { position: relative; z-index: 1; }
 
         h1 {
             font-size: 75px;
@@ -68,7 +87,6 @@
             margin-top: 12px;
         }
 
-        /* Botão música */
         .btn-musica {
             margin-top: 35px;
             padding: 13px 30px;
@@ -93,6 +111,8 @@
             padding: 60px 20px;
             text-align: center;
             background: #080808;
+            position: relative;
+            z-index: 1;
         }
         .redes h2 {
             font-size: 32px;
@@ -129,6 +149,8 @@
             color: #888;
             font-size: 14px;
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
         footer strong { color: white; }
         .creditos {
@@ -138,7 +160,6 @@
             color: #777;
         }
 
-        /* LED inferior */
         .led-bottom {
             height: 3px;
             background: #ff0000;
@@ -161,6 +182,28 @@
 <body>
 
     <div class="led"></div>
+
+    <!-- DESENHOS: estrelas vermelhas e X brancos -->
+    <div class="estrelas">
+        <div class="estrela" style="top:8%; left:12%;">★</div>
+        <div class="xis" style="top:15%; left:78%;">✕</div>
+        <div class="estrela" style="top:22%; left:45%;">★</div>
+        <div class="xis" style="top:30%; left:20%;">✕</div>
+        <div class="estrela" style="top:38%; left:85%;">★</div>
+        <div class="xis" style="top:48%; left:55%;">✕</div>
+        <div class="estrela" style="top:55%; left:10%;">★</div>
+        <div class="xis" style="top:62%; left:70%;">✕</div>
+        <div class="estrela" style="top:70%; left:35%;">★</div>
+        <div class="xis" style="top:78%; left:88%;">✕</div>
+        <div class="estrela" style="top:85%; left:18%;">★</div>
+        <div class="xis" style="top:12%; left:40%;">✕</div>
+        <div class="estrela" style="top:42%; left:5%;">★</div>
+        <div class="xis" style="top:90%; left:60%;">✕</div>
+        <div class="estrela" style="top:25%; left:92%;">★</div>
+        <div class="xis" style="top:50%; left:30%;">✕</div>
+        <div class="estrela" style="top:65%; left:50%;">★</div>
+        <div class="xis" style="top:5%; left:60%;">✕</div>
+    </div>
 
     <header>
         <h1>AOIofc1</h1>
