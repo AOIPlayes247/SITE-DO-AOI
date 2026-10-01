@@ -38,12 +38,8 @@
             z-index: 999;
         }
         @keyframes ledPassando {
-            0% {
-                left: -70%;
-            }
-            100% {
-                left: 100%;
-            }
+            0% { left: -70%; }
+            100% { left: 100%; }
         }
         /* CABEÇALHO */
         header {
@@ -85,6 +81,27 @@
                 0 0 10px #ff0000,
                 0 0 25px #ff0000;
         }
+        /* BOTÃO DE MÚSICA */
+        .btn-musica {
+            margin-top: 30px;
+            padding: 14px 32px;
+            border: 1px solid #ff0000;
+            border-radius: 50px;
+            background: #0d0d0d;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+        }
+        .btn-musica:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+            box-shadow:
+                0 0 15px #ff0000,
+                0 0 30px #ff0000;
+        }
         /* REDES */
         .redes {
             padding: 70px 20px;
@@ -110,8 +127,7 @@
             font-size: 19px;
             font-weight: bold;
             transition: 0.3s;
-            box-shadow:
-                0 0 8px rgba(255, 0, 0, 0.3);
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.3);
         }
         .botao:hover {
             background: #ff0000;
@@ -164,7 +180,6 @@
                     0 0 35px #ff0000;
             }
         }
-        /* Esconde o player do YouTube */
         #player {
             position: absolute;
             width: 1px;
@@ -175,96 +190,9 @@
     </style>
 </head>
 <body>
-    <!-- FAIXA DE LED ANIMADA -->
     <div class="led"></div>
 
-    <!-- CABEÇALHO -->
     <header>
         <h1>AOIofc1</h1>
         <div class="linha"></div>
-        <p class="subtitulo">
-            Bem-vindo AO CANTINHO DO AOI 🎮
-        </p>
-        <p class="subtitulo">
-            Conteúdos, vídeos, lives e muito mais.
-        </p>
-    </header>
-
-    <!-- REDES SOCIAIS -->
-    <section class="redes">
-        <h2>🌐 MINHAS REDES!</h2>
-        <a class="botao" href="https://www.youtube.com/@AOIofc1" target="_blank">
-            🔴 YouTube
-        </a>
-        <a class="botao" href="https://www.instagram.com/aoiofc1/" target="_blank">
-            🟢 Instagram
-        </a>
-        <a class="botao" href="https://www.tiktok.com/@aoiofc1" target="_blank">
-            ⚪ TikTok
-        </a>
-        <a class="botao" href="https://x.com/AOIofc1" target="_blank">
-            𝕏 X / Twitter
-        </a>
-    </section>
-
-    <!-- RODAPÉ + CRÉDITOS -->
-    <footer>
-          © AOIofc1
-
-        <div class="creditos">
-            <strong>Créditos</strong><br>
-            Site criado por <strong>AOIofc1</strong><br>
-            Música: <strong>Dreams</strong> — Joakim Karud (2016)
-        </div>
-    </footer>
-
-    <!-- LED INFERIOR -->
-    <div class="led-bottom"></div>
-
-    <!-- Player do YouTube (escondido) -->
-    <div id="player"></div>
-
-    <script>
-        // Carrega a API do YouTube
-        var tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/iframe_api";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-        var player;
-        var musicaIniciada = false;
-
-        function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player', {
-                height: '1',
-                width: '1',
-                videoId: 'tLcfHqjDpBg',
-                playerVars: {
-                    'autoplay': 0,
-                    'controls': 0,
-                    'loop': 1,
-                    'playlist': 'tLcfHqjDpBg',
-                    'modestbranding': 1,
-                    'rel': 0
-                },
-                events: {
-                    'onReady': onPlayerReady
-                }
-            });
-        }
-
-        function onPlayerReady(event) {
-            // Volume (0 a 100)
-            event.target.setVolume(35);
-
-            // Só toca depois do primeiro clique na página
-            document.body.addEventListener('click', function() {
-                if (!musicaIniciada) {
-                    event.target.playVideo();
-                    musicaIniciada = true;
-                }
-            });
-        }
-    </script>
-</body>
-</html>
+        <p class="subtitulo">Bem-vindo AO CANTINHO DO AOI 🎮
